@@ -8,11 +8,15 @@
     android:background="@drawable/rectangle_gradient">
 
     <ImageView
+
+        android:id="@+id/imageview"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:id="@+id/imageview">
+        android:layout_marginHorizontal="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
-    </ImageView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
