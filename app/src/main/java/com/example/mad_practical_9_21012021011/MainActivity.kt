@@ -8,26 +8,31 @@ import android.widget.ImageView
 class MainActivity : AppCompatActivity() {
 
     lateinit var alarmAnimation : AnimationDrawable
-
     lateinit var heartAnimation : AnimationDrawable
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val imageAlarm : ImageView = findViewById(R.id.imageAlarm)
+        val imageAlarm : ImageView = findViewById(R.id.alarm)
+        val imageHeart : ImageView = findViewById(R.id.heart)
+
 
         imageAlarm.setBackgroundResource(R.drawable.alarm_animation_list)
+        imageHeart.setBackgroundResource(R.drawable.heart_animation_list)
 
+        heartAnimation = imageHeart.background as AnimationDrawable
         alarmAnimation = imageAlarm.background as AnimationDrawable
     }
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {
         if (hasFocus){
             alarmAnimation.start()
+            heartAnimation.start()
         }
         else{
             alarmAnimation.stop()
+            heartAnimation.stop()
         }
         super.onWindowFocusChanged(hasFocus)
     }

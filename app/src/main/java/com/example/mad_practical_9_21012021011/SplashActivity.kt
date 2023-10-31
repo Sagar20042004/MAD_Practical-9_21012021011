@@ -1,5 +1,6 @@
 package com.example.mad_practical_9_21012021011
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.drawable.AnimationDrawable
 import androidx.appcompat.app.AppCompatActivity
@@ -8,33 +9,33 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
 
-class SplashActivity : AppCompatActivity(),Animation.AnimationListener {
+@SuppressLint("CustomSplashScreen")
+class SplashActivity : AppCompatActivity(), Animation.AnimationListener {
 
-    lateinit var AnimationLogo : AnimationDrawable
-    lateinit var logoImage : ImageView
-    lateinit var logoAnimation : Animation
+    lateinit var AnimationLogo: AnimationDrawable
+    lateinit var logoImage: ImageView
+    lateinit var logoAnimation: Animation
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-     logoImage = findViewById(R.id.imageview)
+        logoImage = findViewById(R.id.uvpce)
         logoImage.setBackgroundResource(R.drawable.logo_animation_list)
         AnimationLogo = logoImage.background as AnimationDrawable
 
 
-        logoAnimation = AnimationUtils.loadAnimation(this , R.anim.twin_animation)
+        logoAnimation = AnimationUtils.loadAnimation(this, R.anim.twin_animation)
         logoAnimation.setAnimationListener(this)
     }
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {
-        if (hasFocus){
+        if (hasFocus) {
             logoImage.startAnimation(logoAnimation)
             AnimationLogo.start()
 
-        }
-        else{
+        } else {
             AnimationLogo.stop()
         }
         super.onWindowFocusChanged(hasFocus)
@@ -46,7 +47,8 @@ class SplashActivity : AppCompatActivity(),Animation.AnimationListener {
 
     override fun onAnimationEnd(p0: Animation?) {
 
-        Intent(this,MainActivity::class.java).apply { startActivity(this) }
+    val intent =  Intent(this@SplashActivity, MainActivity::class.java)
+        startActivity(intent)
     }
 
     override fun onAnimationRepeat(p0: Animation?) {
